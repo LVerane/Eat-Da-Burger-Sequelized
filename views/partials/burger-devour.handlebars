@@ -1,0 +1,19 @@
+<li>
+	{{burger}}
+
+	{{#if devoured}}
+	<button class="order-another" data-id="{{id}}">
+		ORDER ANOTHER ONE!
+	</button>
+	{{else}}
+	<button class="devour" data-id="{{id}}">
+		DEVOUR TIME!
+	</button>
+
+	<button class="delete-burger" data-id="{{id}}">
+		TRASH CAN
+	</button>
+
+	{{/if}}
+
+</li>

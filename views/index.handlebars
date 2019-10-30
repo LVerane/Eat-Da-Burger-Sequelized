@@ -1,0 +1,76 @@
+<div class="header">
+  <h1>Burgers!</h1>
+  <div class="instructions">
+    <h3>Eat tasty burgers or throw them away</h3>
+    <h3>Order a brand new burger or copy someone else's</h3>
+    <h3>Make a pick up order or grab someone else's</h3>
+  </div>
+</div>
+
+<div class="box">
+
+  <div class="inner-box">
+    <h2>Burgers Ready to Eat</h2>
+
+    <ul>
+      {{#each burgers}}
+      {{#unless devoured}}
+      {{#unless toGo}}
+      {{> burger-devour}}
+      {{/unless}}
+      {{/unless}}
+      {{/each}}
+    </ul>
+  </div>
+
+  <div class="inner-box">
+    <h2>Eaten Burgers</h2>
+
+    <ul>
+      {{#each burgers}}
+      {{#if devoured}}
+      {{> burger-devour}}
+      {{/if}}
+      {{/each}}
+    </ul>
+  </div>
+
+</div>
+
+<div class="box">
+
+  <div class="inner-box">
+    <h2>Ready for Pick Up</h2>
+
+    <ul>
+      {{#each burgers}}
+      {{#if toGo}}
+      {{#unless devoured}}
+      {{> burger-togo}}
+      {{/unless}}
+      {{/if}}
+      {{/each}}
+    </ul>
+  </div>
+
+  <div class="inner-box">
+    <h2>Add a Burger</h2>
+    <form class="create-form">
+
+      <div>
+        <label for="ca">Burger Name:</label>
+        <input type="text" id="ca" name="burger">
+      </div>
+
+      <div>
+        <label for="toGo">Are you eating it here or picking it up?</label><br>
+        <input type="radio" name="toGo" value="1">To go<br>
+        <input type="radio" name="toGo" value="0" checked> Eat here
+      </div>
+
+      <button type="submit">Add Burger</button>
+
+    </form>
+  </div>
+
+</div>

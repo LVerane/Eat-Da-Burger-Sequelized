@@ -1,0 +1,53 @@
+body {
+  font-size: 120%;
+}
+
+.instructions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+li {
+  padding: 5px;
+  margin: 5px;
+  background: #faebd7;
+}
+
+h1 {
+  max-width: 80%;
+  margin: 20px auto;
+}
+
+h1,
+h2,
+h3,
+form {
+  background: #faebd7;
+  padding: 0.5em;
+}
+
+label {
+  font-weight: bold;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inner-box {
+  width: 45%;
+  margin: auto;
+}
+
+.header {
+  text-align: center;
+}
+
+input {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
