@@ -10,8 +10,8 @@ var db = require("../models");
 module.exports = function(app) {
   app.get("/", function(req, res) {
     db.Burger.findAll({}).then(function(results) {
-      // console.log(results[0]);
-      res.render("index", results);
+      console.log(results);
+      res.render("index", { burgers: results });
       // res.json(results[0]);
     });
   });
@@ -52,7 +52,7 @@ module.exports = function(app) {
         devoured: req.body.devoured,
         toGo: req.body.toGo
       },
-      { where: { id: req.body.id } }
+      { where: { id: req.params.id } }
     ).then(data => res.json(data));
   });
 };
