@@ -3,10 +3,41 @@ $(function() {
   $(".devour").on("click", function(event) {
     var id = $(this).data("id");
 
-    // var newdevourState = {
-    //   devoured: true,
-    //   toGo: false
-    // };
+    var customer = $(`#nc${id}`)
+      .val()
+      .trim();
+    console.log(customer);
+    if (customer === "") {
+      customer = "Anonymous";
+    }
+    console.log(customer);
+    $.ajax("/api/customer/" + customer, {
+      type: "GET"
+    }).then(function(data) {
+      if (data === null) {
+        // console.log("SOMETHING");
+        // console.log(data);
+        $.ajax("/api/customer", {
+          type: "POST",
+          data: {
+            customer: customer
+          }
+        }).then(function() {
+          // Reload the page to get the updated list
+          location.reload();
+        });
+      } else {
+        $.ajax("/api/customer/" + customer, {
+          type: "PUT",
+          data: {
+            burgersEaten: data.burgersEaten + 1
+          }
+        }).then(function() {
+          // Reload the page to get the updated list
+          location.reload();
+        });
+      }
+    });
 
     // Send the PUT request.
     $.ajax("/api/burgers/" + id, {
@@ -23,11 +54,6 @@ $(function() {
 
   $(".togo").on("click", function(event) {
     var id = $(this).data("id");
-
-    // var readyState = {
-    //   devoured: false,
-    //   toGo: false
-    // };
 
     // Send the PUT request.
     $.ajax("/api/burgers/" + id, {
@@ -47,12 +73,6 @@ $(function() {
     $.ajax("/api/burgers/" + id, {
       type: "GET"
     }).then(function(data) {
-      // var newBurger = {
-      //   burger: data[0].burger,
-      //   toGo: $("[name=toGo]:checked")
-      //     .val()
-      //     .trim()
-      // };
       console.log(data);
       $.ajax("/api/burgers", {
         type: "POST",
@@ -73,20 +93,11 @@ $(function() {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
 
-    // var newBurger = {
-    //   burger: $("#ca")
-    //     .val()
-    //     .trim(),
-    //   toGo: $("[name=toGo]:checked")
-    //     .val()
-    //     .trim()
-    // };
-
     // Send the POST request.
     $.ajax("/api/burgers", {
       type: "POST",
       data: {
-        burger: $("#ca")
+        burger: $("#nb")
           .val()
           .trim(),
         toGo: $("[name=toGo]:checked")
