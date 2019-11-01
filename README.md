@@ -19,7 +19,10 @@ If you forget how it works or don't like readmes there are some basic instructio
 
 ### Burgers Ready to Eat
 
-Shows all the burgers ready to be eaten (or thrown in the trash can, if the user so chooses)
+Shows all the burgers ready to be eaten (or thrown in the trash can, if the user so chooses)\
+Allows user to enter their name to have it stored in as the person who ate the burger, and keeps track of how many burgers each person ate\
+Defaults to Anonymous if no name is provided\
+As of now the tables aren't truly associated and the value of "eaten by" is simply stored in the burgers table
 
 #
 

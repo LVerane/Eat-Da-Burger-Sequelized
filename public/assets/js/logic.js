@@ -14,29 +14,31 @@ $(function() {
     $.ajax("/api/customer/" + customer, {
       type: "GET"
     }).then(function(data) {
-      if (data === null) {
-        // console.log("SOMETHING");
-        // console.log(data);
-        $.ajax("/api/customer", {
-          type: "POST",
-          data: {
-            customer: customer
-          }
-        }).then(function() {
-          // Reload the page to get the updated list
-          location.reload();
-        });
-      } else {
-        $.ajax("/api/customer/" + customer, {
-          type: "PUT",
-          data: {
-            burgersEaten: data.burgersEaten + 1
-          }
-        }).then(function() {
-          // Reload the page to get the updated list
-          location.reload();
-        });
-      }
+      // if (data === null) {
+      //   // console.log("SOMETHING");
+      //   // console.log(data);
+      //   $.ajax("/api/customer", {
+      //     type: "POST",
+      //     data: {
+      //       customer: customer
+      //     }
+      //   }).then(function() {
+      //     // Reload the page to get the updated list
+      //     location.reload();
+      //   });
+      // } else {
+      //   $.ajax("/api/customer/" + customer, {
+      //     type: "PUT",
+      //     data: {
+      //       burgersEaten: data.burgersEaten + 1
+      //     }
+      //   }).then(function() {
+      //     // Reload the page to get the updated list
+      //     location.reload();
+      //   });
+      // }
+      console.log(data);
+      // location.reload();
     });
 
     // Send the PUT request.
@@ -44,7 +46,8 @@ $(function() {
       type: "PUT",
       data: {
         devoured: true,
-        toGo: false
+        toGo: false,
+        eatenBy: customer
       }
     }).then(function() {
       // Reload the page to get the updated list

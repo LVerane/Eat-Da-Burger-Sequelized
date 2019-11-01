@@ -3,7 +3,7 @@ module.exports = function(sequelize, DataTypes) {
     customer: DataTypes.STRING,
     burgersEaten: {
       type: DataTypes.INTEGER,
-      defaultValue: 0
+      defaultValue: 1
     }
   });
 

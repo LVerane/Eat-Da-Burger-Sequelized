@@ -41,7 +41,8 @@ module.exports = function(app) {
     db.Burger.update(
       {
         devoured: req.body.devoured,
-        toGo: req.body.toGo
+        toGo: req.body.toGo,
+        eatenBy: req.body.eatenBy
       },
       { where: { id: req.params.id } }
     ).then(data => res.json(data));
